@@ -1,0 +1,32 @@
+<ion-menu side="start" content-id="main-content" #menu>
+  <ion-header>
+    <ion-toolbar translucent>
+      <ion-title class="titulo">{{usuario.nombre}} {{usuario.apellido}}</ion-title>
+      <ion-title class="email"> {{usuario.email}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+
+      <ion-item>
+        <ion-icon name="mail" slot="start"></ion-icon>
+        <ion-label>Inbox</ion-label>
+      </ion-item>
+      <ion-menu-toggle>
+        <ion-item>
+          <ion-icon name="keypad-outline" slot="start"></ion-icon>
+          <ion-label>Cambiar Contraseña</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+
+    </ion-list>
+    <ion-list>
+      <ion-menu-toggle>
+        <ion-item (click)="logout()" menuClose="left">
+          <ion-icon name="chevron-back-outline" slot="start"></ion-icon>
+          <ion-label>Cerrar Sesión</ion-label>
+        </ion-item>
+    </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>

@@ -1,10 +1,33 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { UsuarioGuard } from './guards/usuario.guard';
 
 const routes: Routes = [
   {
+    path: 'main',
+    loadChildren: () => import('./pages/tabs/tabs.module').then(m => m.TabsPageModule),
+    canLoad: [UsuarioGuard]
+  },
+  {
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then( m => m.LoginPageModule)
+  },
+  {
     path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    pathMatch: 'full',
+    redirectTo: 'login'
+  },
+  {
+    path: 'gastos',
+    loadChildren: () => import('./pages/gastos/gastos.module').then( m => m.GastosPageModule)
+  },
+  {
+    path: 'detalle-dia',
+    loadChildren: () => import('./pages/detalle-dia/detalle-dia.module').then( m => m.DetalleDiaPageModule)
+  },
+  {
+    path: 'agregar-dia/:nuevo',
+    loadChildren: () => import('./pages/agregar-dia/agregar-dia.module').then( m => m.AgregarDiaPageModule)
   }
 ];
 @NgModule({

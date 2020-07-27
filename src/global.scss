@@ -24,3 +24,9 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.toast{
+    position: absolute !important;
+    right: -10px !important;
+    top: -60px !important;
+}

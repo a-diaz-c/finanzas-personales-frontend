@@ -1,0 +1,47 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar color="light">
+    <ion-title>Lista De Días</ion-title>
+    
+    <!--<ion-buttons slot="secondary">
+      <ion-button>
+        <ion-icon name="refresh-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>-->
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="light">
+
+  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <ion-grid fixed>
+    <ion-row  color="light">
+      <ion-col  size="12" size-lg="3" size-md="4" size-sm="6" size-xs="12"
+                *ngFor="let dia of dias">
+        
+        <ion-card (click)="seleccionarDia(dia.idDia, dia.fecha)">
+          <ion-card-header>
+            <ion-card-title>{{dia.fecha}}</ion-card-title>
+          </ion-card-header>
+          <ion-card-content>
+            <ion-text color="primary">
+              <h1>Saldo Inicial: {{dia.saldoInicial}}</h1>
+              <h1>Saldo Final: {{dia.saldoFinal}}</h1>
+            </ion-text>
+          </ion-card-content>
+        </ion-card>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="medium" (click)="agregarDia()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+</ion-content>
