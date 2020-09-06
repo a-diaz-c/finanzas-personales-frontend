@@ -23,11 +23,18 @@ const routes: Routes = [
   },
   {
     path: 'detalle-dia',
-    loadChildren: () => import('./pages/detalle-dia/detalle-dia.module').then( m => m.DetalleDiaPageModule)
+    loadChildren: () => import('./pages/detalle-dia/detalle-dia.module').then( m => m.DetalleDiaPageModule),
+    canLoad: [UsuarioGuard]
   },
   {
     path: 'agregar-dia/:nuevo',
-    loadChildren: () => import('./pages/agregar-dia/agregar-dia.module').then( m => m.AgregarDiaPageModule)
+    loadChildren: () => import('./pages/agregar-dia/agregar-dia.module').then( m => m.AgregarDiaPageModule),
+    canLoad: [UsuarioGuard]
+  },
+  {
+    path: 'categorias',
+    loadChildren: () => import('./pages/categorias/categorias.module').then( m => m.CategoriasPageModule),
+    canLoad: [UsuarioGuard]
   }
 ];
 @NgModule({

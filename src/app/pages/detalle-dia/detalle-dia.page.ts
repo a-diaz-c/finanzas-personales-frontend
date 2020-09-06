@@ -67,6 +67,9 @@ export class DetalleDiaPage implements OnInit {
           icon: 'close-circle-outline',
           cssClass: 'action-dark',
           handler: () => {
+            this.diaService.deleteDia(this.token, this.idDia).subscribe( (resp: any) => {
+              this.navCtrl.navigateBack('/main/tabs/tab1', {animated:true});
+            });
           }
         }, 
         {

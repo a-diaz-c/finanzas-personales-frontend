@@ -38,5 +38,15 @@ export class DiasService {
     return this.http.get(`${URL}/api/dias/saldoInicial/${fecha}`, {headers: this.header});
   }
 
+  deleteDia(token: string, idDia: number){
+    this.header.Authorization = "Bearer " + token;
+    return this.http.delete(`${URL}/api/dias/${idDia}`, { headers:  this.header});
+  }
+
+  updateDia(token: string, idDia: number, datos:any){
+    this.header.Authorization = "Bearer " + token;
+    return this.http.put(`${URL}/api/dias/${idDia}`, datos,  { headers:  this.header});
+  }
+
   
 }

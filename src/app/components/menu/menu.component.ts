@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { UsuarioService } from 'src/app/services/usuario.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Storage } from '@ionic/storage';
-import { MenuController } from '@ionic/angular';
+import { MenuController, NavController } from '@ionic/angular';
  
 @Component({
   selector: 'app-menu',
@@ -21,7 +21,8 @@ export class MenuComponent implements OnInit {
   };
 
   constructor(private usuarioService: UsuarioService, private storage: Storage,
-              private menu: MenuController) { }
+              private menu: MenuController,
+              private navCtrl: NavController) { }
 
   async ngOnInit() {
     await this.cargarToken(); 
@@ -32,8 +33,20 @@ export class MenuComponent implements OnInit {
     });
   }
 
+  ionViewWillEnter(){
+    console.log("ionViewWillEnter");
+  }
+
+  ionViewDidEnter(){
+    console.log("ionViewDidEnter");
+  }
+
   async cargarToken(){
     this.token = await this.storage.get('token');
+  }
+
+  categorias(){
+    this.navCtrl.navigateRoot('categorias');
   }
 
   logout(){

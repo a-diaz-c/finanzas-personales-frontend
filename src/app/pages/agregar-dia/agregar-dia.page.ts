@@ -6,6 +6,7 @@ import { Storage } from '@ionic/storage';
 import { CategoriasService } from 'src/app/services/categorias.service';
 import { element } from 'protractor';
 import { ActivatedRoute } from '@angular/router';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-agregar-dia',
@@ -31,7 +32,8 @@ export class AgregarDiaPage implements OnInit {
               private gastosService: GastosService,
               private categoriaService: CategoriasService,
               private storage: Storage,
-              private route: ActivatedRoute) {
+              private route: ActivatedRoute,
+              private nacCtrl: NavController) {
     this.crearFormulario();
     this.idDia = parseInt(this.route.snapshot.paramMap.get('nuevo'));
    }
@@ -98,9 +100,20 @@ export class AgregarDiaPage implements OnInit {
     this.datoJson.fecha = this.formulario.get('fecha').value;
     this.datoJson.saldoInicial = this.formulario.get('saldoInicial').value;
     this.datoJson['cantidades'] = this.cantidades;
-    this.diasService.addDias(this.token, this.datoJson).subscribe( (resp: any) =>{
-      console.log(resp);
-    });
+
+    if(this.idDia == 0){
+      this.diasService.addDias(this.token, this.datoJson).subscribe( (resp: any) =>{
+        console.log(resp);
+        this.nacCtrl.navigateRoot('/main/tabs/tab1');
+      });
+    }else{
+      this.diasService.updateDia(this.token, this.idDia, this.datoJson).subscribe( (resp: any) =>{
+        console.log(resp);
+        this.nacCtrl.navigateRoot('/main/tabs/tab1');
+      });
+    }
+
+    
   }
 
   async cargarToken(){

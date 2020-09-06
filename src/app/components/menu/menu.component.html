@@ -8,10 +8,12 @@
   <ion-content>
     <ion-list>
 
-      <ion-item>
-        <ion-icon name="mail" slot="start"></ion-icon>
-        <ion-label>Inbox</ion-label>
-      </ion-item>
+      <ion-menu-toggle>
+        <ion-item (click)="categorias()">
+          <ion-icon name="pricetags-outline" slot="start"></ion-icon>
+          <ion-label>Categorías</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
       <ion-menu-toggle>
         <ion-item>
           <ion-icon name="keypad-outline" slot="start"></ion-icon>
