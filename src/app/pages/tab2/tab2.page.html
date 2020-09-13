@@ -1,44 +1,45 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar color="secondary">
-    <!-- <ion-buttons slot="start">
+    <ion-toolbar color="secondary">
+        <!-- <ion-buttons slot="start">
       <ion-back-button defaultHref="/main/tabs/tab1"></ion-back-button>
     </ion-buttons> -->
-    <ion-title>Perfil</ion-title>
-    
-    <!-- <ion-buttons slot="secondary">
+        <ion-title>Perfil</ion-title>
+
+        <!-- <ion-buttons slot="secondary">
       <ion-button (click)="agregarCategoria()">
         <ion-icon name="add-outline"></ion-icon>
       </ion-button>
     </ion-buttons> -->
 
-  </ion-toolbar>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content color="light">
 
-  <ion-title class="titulo">{{usuario.nombre}} {{usuario.apellido}}</ion-title>
-  <ion-title class="email"> {{usuario.email}}</ion-title>
+    <ion-title class="titulo">{{usuario.nombre}} {{usuario.apellido}}</ion-title>
+    <ion-title class="email"> {{usuario.email}}</ion-title>
+    <ion-title class="email"> {{usuario.saldo}}</ion-title>
 
-  <ion-list color="light" class="ion-no-padding">
-    <ion-item-sliding color="light">
-      <ion-item (click)="categorias()">
-        <ion-icon name="pricetags-outline" slot="start"></ion-icon>
-        <ion-label>Categorías</ion-label>
-      </ion-item>
-    </ion-item-sliding> 
-    <ion-item-sliding color="light">
-      <ion-item>
-        <ion-icon name="keypad-outline" slot="start"></ion-icon>
-        <ion-label>Cambiar Contraseña</ion-label>
-      </ion-item>
-    </ion-item-sliding> 
-    <ion-item-sliding color="light">
-      <ion-item (click)="logout()" menuClose="left">
-        <ion-icon name="chevron-back-outline" slot="start"></ion-icon>
-        <ion-label>Cerrar Sesión</ion-label>
-      </ion-item>
-    </ion-item-sliding> 
-  </ion-list>
+    <ion-list color="light" class="ion-no-padding">
+        <ion-item-sliding color="light">
+            <ion-item (click)="categorias()">
+                <ion-icon name="pricetags-outline" slot="start"></ion-icon>
+                <ion-label>Categorías</ion-label>
+            </ion-item>
+        </ion-item-sliding>
+        <ion-item-sliding color="light">
+            <ion-item>
+                <ion-icon name="keypad-outline" slot="start"></ion-icon>
+                <ion-label>Cambiar Contraseña</ion-label>
+            </ion-item>
+        </ion-item-sliding>
+        <ion-item-sliding color="light">
+            <ion-item (click)="logout()" menuClose="left">
+                <ion-icon name="chevron-back-outline" slot="start"></ion-icon>
+                <ion-label>Cerrar Sesión</ion-label>
+            </ion-item>
+        </ion-item-sliding>
+    </ion-list>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+    <app-explore-container name="Tab 2 page"></app-explore-container>
 </ion-content>
