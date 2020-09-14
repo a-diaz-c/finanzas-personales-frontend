@@ -1,58 +1,57 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar color="light">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/main/tabs/tab1"></ion-back-button>
-    </ion-buttons>
-    <ion-title>{{fecha}}</ion-title>
+    <ion-toolbar color="azul">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/main/tabs/tab1"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="titulo">{{fecha}}</ion-title>
 
-    <ion-buttons slot="secondary">
-      <ion-button (click)="lanzarMenu()">
-        <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-    
-  </ion-toolbar>
+        <ion-buttons slot="secondary">
+            <ion-button (click)="lanzarMenu()">
+                <ion-icon slot="icon-only" name="ellipsis-vertical-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+
+    </ion-toolbar>
 </ion-header>
 
-<ion-content color="light">
+<ion-content color="azul">
 
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-label>Saldo Inicial</ion-label>
-      </ion-col>
-      <ion-col>
-        <ion-label color="primary">{{dia.saldoInicial}}</ion-label>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-label>Saldo Final</ion-label>
-      </ion-col>
-      <ion-col>
-        <ion-label color="primary" >{{dia.saldoFinal}}</ion-label>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  
-  
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-label>Saldo Inicial</ion-label>
+            </ion-col>
+            <ion-col>
+                <ion-label color="primary">{{dia.saldoInicial}}</ion-label>
+            </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+                <ion-label>Saldo Final</ion-label>
+            </ion-col>
+            <ion-col>
+                <ion-label color="primary">{{dia.saldoFinal}}</ion-label>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 
-  <ion-list color="light" class="ion-no-padding">
-    <ion-list-header class="titulo" color="light">
-      Movimientos
-    </ion-list-header>
-    <ion-item *ngFor="let gasto of gastos" color="light"> 
-      <ion-label>{{gasto.gasto.nombre}}</ion-label>
-      <ion-note slot="end" class="cantidad ion-color" 
-                [ngClass]="{
+
+
+    <ion-list color="light" class="ion-no-padding">
+        <ion-list-header class="titulo" color="azul">
+            Movimientos
+        </ion-list-header>
+        <ion-item *ngFor="let gasto of gastos" color="azul">
+            <ion-label>{{gasto.gasto.nombre}}</ion-label>
+            <ion-note slot="end" class="cantidad ion-color" [ngClass]="{
                   'ion-color-danger':  !gasto.ingreso,
                   'ion-color-primary': gasto.ingreso
                 }">
-        {{gasto.cantidad}}
-      </ion-note>
-    </ion-item>
-  </ion-list>
+                {{gasto.cantidad}}
+            </ion-note>
+        </ion-item>
+    </ion-list>
 
 
-  
+
 </ion-content>

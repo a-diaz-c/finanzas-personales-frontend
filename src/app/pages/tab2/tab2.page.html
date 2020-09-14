@@ -1,9 +1,9 @@
 <ion-header class="ion-no-border">
-    <ion-toolbar color="secondary">
+    <ion-toolbar color="azul">
         <!-- <ion-buttons slot="start">
       <ion-back-button defaultHref="/main/tabs/tab1"></ion-back-button>
     </ion-buttons> -->
-        <ion-title>Perfil</ion-title>
+        <ion-title class="titulo">Perfil</ion-title>
 
         <!-- <ion-buttons slot="secondary">
       <ion-button (click)="agregarCategoria()">
@@ -14,27 +14,31 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-content color="light">
+<ion-content color="azul">
+
+    <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
 
     <ion-title class="titulo">{{usuario.nombre}} {{usuario.apellido}}</ion-title>
     <ion-title class="email"> {{usuario.email}}</ion-title>
     <ion-title class="email"> {{usuario.saldo}}</ion-title>
 
-    <ion-list color="light" class="ion-no-padding">
-        <ion-item-sliding color="light">
-            <ion-item (click)="categorias()">
+    <ion-list class="ion-no-padding">
+        <ion-item-sliding>
+            <ion-item (click)="categorias()" color="azul">
                 <ion-icon name="pricetags-outline" slot="start"></ion-icon>
                 <ion-label>Categorías</ion-label>
             </ion-item>
         </ion-item-sliding>
         <ion-item-sliding color="light">
-            <ion-item>
+            <ion-item color="azul">
                 <ion-icon name="keypad-outline" slot="start"></ion-icon>
                 <ion-label>Cambiar Contraseña</ion-label>
             </ion-item>
         </ion-item-sliding>
         <ion-item-sliding color="light">
-            <ion-item (click)="logout()" menuClose="left">
+            <ion-item (click)="logout()" menuClose="left" color="azul">
                 <ion-icon name="chevron-back-outline" slot="start"></ion-icon>
                 <ion-label>Cerrar Sesión</ion-label>
             </ion-item>

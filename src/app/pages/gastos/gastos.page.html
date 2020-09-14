@@ -1,46 +1,46 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar color="secondary">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/main/tabs/tab2"></ion-back-button>
-    </ion-buttons>
-    <ion-title>{{categoriaNombre}}</ion-title>
-    
-    <ion-buttons slot="secondary">
-      <ion-button (click)="agregarGasto()">
-        <ion-icon name="add-outline"></ion-icon>
-      </ion-button>
-    </ion-buttons>
+    <ion-toolbar color="azul">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="categorias"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="titulo">{{categoriaNombre}}</ion-title>
 
-  </ion-toolbar>
+        <ion-buttons slot="secondary">
+            <ion-button (click)="agregarGasto()">
+                <ion-icon name="add-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+
+    </ion-toolbar>
 </ion-header>
 
-<ion-content color="light">
-  <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
+<ion-content color="azul">
+    <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
 
-  <ion-list color="light" class="ion-no-padding">
+    <ion-list color="azul" class="ion-no-padding">
 
-    <ion-item-sliding *ngFor="let gasto of gastos">
-      <ion-item color="light">
-        <ion-label>{{gasto.nombre}}</ion-label>
-      </ion-item>
+        <ion-item-sliding *ngFor="let gasto of gastos">
+            <ion-item color="azul">
+                <ion-label>{{gasto.nombre}}</ion-label>
+            </ion-item>
 
-      <ion-item-options side="end">
-        <ion-item-option (click)="borrarGasto( gasto )" color="danger">
-          <ion-icon name="close" slot="icon-only"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
-    
-      <ion-item-options side="start">
-        <ion-item-option (click)="modificarGasto( gasto )" color="secondary">
-          <ion-icon name="create" slot="icon-only"></ion-icon>
-        </ion-item-option>
-      </ion-item-options>
+            <ion-item-options side="end">
+                <ion-item-option (click)="borrarGasto( gasto )" color="danger">
+                    <ion-icon name="close" slot="icon-only"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+
+            <ion-item-options side="start">
+                <ion-item-option (click)="modificarGasto( gasto )" color="secondary">
+                    <ion-icon name="create" slot="icon-only"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
 
 
-    </ion-item-sliding>
+        </ion-item-sliding>
 
-  </ion-list>
+    </ion-list>
 
 </ion-content>

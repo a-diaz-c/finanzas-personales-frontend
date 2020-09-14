@@ -25,6 +25,10 @@ export class Tab2Page implements OnInit{
               private navCtrl: NavController) {}
   async ngOnInit(){
     await this.cargarToken();
+    this.cargarUsusario();
+  }
+
+  cargarUsusario(){
     this.usuarioService.getDatosUsuario(this.token).subscribe( (resp: any) => {
       this.usuario = resp.usuario;
     }, (err: HttpErrorResponse) => {
@@ -42,5 +46,10 @@ export class Tab2Page implements OnInit{
 
   logout(){
     this.usuarioService.logout();
+  }
+
+  async refresh(event){
+    await this.cargarUsusario();
+    event.target.complete();
   }
 }

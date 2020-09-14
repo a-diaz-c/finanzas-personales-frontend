@@ -1,106 +1,108 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar color="light">
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/main/tabs/tab1"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Nuevo Día</ion-title>
-  </ion-toolbar>
+    <ion-toolbar color="azul">
+        <ion-buttons slot="start">
+            <ion-back-button defaultHref="/main/tabs/tab1"></ion-back-button>
+        </ion-buttons>
+        <ion-title class="titulo">Nuevo Día</ion-title>
+    </ion-toolbar>
 </ion-header>
 
-<ion-content color="light">
+<ion-content color="azul">
 
-  <form [formGroup]="formulario" (ngSubmit)="submit()">
-    <ion-grid fixed>
-      <ion-row>
-        <ion-col>
-          <ion-item color="light">
-            <ion-input type="date" formControlName="fecha" (ionChange)="cambioFecha($event)">Fecha: </ion-input>
-            <ion-icon name="calendar-outline"></ion-icon>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item color="light">
-            <ion-label position="fixed">Saldo Inicial: </ion-label>
-            <ion-input formControlName="saldoInicial" type="number" step="any"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      
-      <ion-row>
-        <ion-col>
-          <ion-card>
-            <ion-item>
-              <ion-label>Categoría</ion-label>
-              <ion-select formControlName="categoria" (ionChange)="cambioCategoria($event)">
-                <ion-select-option *ngFor="let categoria of categorias" 
-                                    [value]="categoria.idCategoria" >
-                  {{categoria.nombre}}
-                </ion-select-option>
-              </ion-select>
-            </ion-item>
-            <ion-item>
-              <ion-label>Movimiento</ion-label>
-              <ion-select formControlName="gasto" (ionChange)="addNombreGasto($event)">
-                <ion-select-option *ngFor="let gasto of gastos"  
-                                   [value]="gasto.idGasto">
-                  {{gasto.nombre}}
-                </ion-select-option>
-              </ion-select>
-            </ion-item>
-            <ion-item>
-              <ion-label>Ingreso</ion-label>
-              <ion-checkbox formControlName="ingreso"></ion-checkbox>
-            </ion-item>
-            <ion-item >
-              <ion-label position="fixed">Cantidad</ion-label>
-              <ion-input formControlName="cantidad" type="number"></ion-input>
-            </ion-item>
-            <ion-item>
-              <ion-button type="button" color="tertiary" shape="round" (click)="agregarGasto()">
-                <ion-icon name="add-outline"></ion-icon>
-              </ion-button>
-            </ion-item>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-      
-      <ion-row>
-        <ion-col>
-          <ion-list class="ion-no-padding">
-            <ion-list-header color="light">
-              Movimientos
-            </ion-list-header>
-      
-            <ion-item-sliding *ngFor="let cantidad of cantidades; let i = index">
-              <ion-item color="light">
-                <ion-label position="fixed">{{cantidad.cantidad}}</ion-label>
-                <ion-label position="fixed">{{cantidad.gasto.nombre}}</ion-label>
-              </ion-item>
-      
-              <ion-item-options side="end">
-                <ion-item-option (click)="borrarGasto( i )" color="danger">
-                  <ion-icon name="close" slot="icon-only"></ion-icon>
-                </ion-item-option>
-              </ion-item-options>
-      
-            </ion-item-sliding>
-      
-          </ion-list>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-button type="submit" color="tertiary" shape="round">
-            Guardar
-          </ion-button>
-        </ion-col>
-      </ion-row>
+    <div class="formulario">
+        <form [formGroup]="formulario" (ngSubmit)="submit()">
+            <ion-grid fixed>
+                <ion-row>
+                    <ion-col>
+                        <ion-item color="light">
+                            <ion-input type="date" formControlName="fecha" (ionChange)="cambioFecha($event)">Fecha: </ion-input>
+                            <ion-icon name="calendar-outline"></ion-icon>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-item color="light">
+                            <ion-label position="fixed">Saldo Inicial: </ion-label>
+                            <ion-input formControlName="saldoInicial" type="number" step="any"></ion-input>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col>
+                        <ion-card color="light">
+                            <ion-item color="light">
+                                <ion-label>Categoría</ion-label>
+                                <ion-select formControlName="categoria" (ionChange)="cambioCategoria($event)">
+                                    <ion-select-option *ngFor="let categoria of categorias" [value]="categoria.idCategoria">
+                                        {{categoria.nombre}}
+                                    </ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                            <ion-item color="light">
+                                <ion-label>Movimiento</ion-label>
+                                <ion-select formControlName="gasto" (ionChange)="addNombreGasto($event)">
+                                    <ion-select-option *ngFor="let gasto of gastos" [value]="gasto.idGasto">
+                                        {{gasto.nombre}}
+                                    </ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                            <ion-item color="light">
+                                <ion-label>Ingreso</ion-label>
+                                <ion-checkbox formControlName="ingreso" color="azul"></ion-checkbox>
+                            </ion-item>
+                            <ion-item color="light">
+                                <ion-label position="fixed">Cantidad</ion-label>
+                                <ion-input formControlName="cantidad" type="number"></ion-input>
+                            </ion-item>
+                            <ion-item color="light">
+                                <ion-button type="button" color="azul" shape="round" (click)="agregarGasto()">
+                                    <ion-icon name="add-outline"></ion-icon>
+                                </ion-button>
+                            </ion-item>
+                        </ion-card>
+                    </ion-col>
+                </ion-row>
+
+                <ion-row>
+                    <ion-col>
+                        <ion-list class="ion-no-padding">
+                            <ion-list-header color="light">
+                                Movimientos
+                            </ion-list-header>
+
+                            <ion-item-sliding *ngFor="let cantidad of cantidades; let i = index">
+                                <ion-item color="light">
+                                    <ion-label position="fixed">{{cantidad.cantidad}}</ion-label>
+                                    <ion-label position="fixed">{{cantidad.gasto.nombre}}</ion-label>
+                                </ion-item>
+
+                                <ion-item-options side="end">
+                                    <ion-item-option (click)="borrarGasto( i )" color="danger">
+                                        <ion-icon name="close" slot="icon-only"></ion-icon>
+                                    </ion-item-option>
+                                </ion-item-options>
+
+                            </ion-item-sliding>
+
+                        </ion-list>
+                    </ion-col>
+                </ion-row>
+                <ion-row>
+                    <ion-col>
+                        <ion-button type="submit" color="verde" shape="round">
+                            Guardar
+                        </ion-button>
+                    </ion-col>
+                </ion-row>
 
 
-    </ion-grid>
-  </form>
+            </ion-grid>
+        </form>
+    </div>
+
+
     <!-- <ion-item color="light">
       <ion-input type="date" formControlName="fecha"></ion-input>
     </ion-item>
