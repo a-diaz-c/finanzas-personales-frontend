@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { DiasService } from 'src/app/services/dias.service';
 import { Storage } from '@ionic/storage';
 import { ActivatedRoute } from '@angular/router';
-import { async } from '@angular/core/testing';
 import { ActionSheetController, NavController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-detalle-dia',
@@ -28,6 +28,7 @@ export class DetalleDiaPage implements OnInit {
               private navCtrl: NavController) {
       this.idDia = parseInt(this.route.snapshot.paramMap.get('id'));
       this.fecha = this.route.snapshot.paramMap.get('fecha');
+
   }
 
   async ngOnInit() {

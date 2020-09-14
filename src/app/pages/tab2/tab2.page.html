@@ -19,10 +19,16 @@
     <ion-refresher slot="fixed" (ionRefresh)="refresh($event)">
         <ion-refresher-content></ion-refresher-content>
     </ion-refresher>
+    <ion-card>
+        <ion-card-content>
+            <ion-title class="nombre" color="verde">{{usuario.nombre}} {{usuario.apellido}}</ion-title>
+            <ion-title class="email"> {{usuario.email}}</ion-title>
+            <ion-title class="saldo"> Tu Saldo ${{usuario.saldo}}</ion-title>
+        </ion-card-content>
+    </ion-card>
 
-    <ion-title class="titulo">{{usuario.nombre}} {{usuario.apellido}}</ion-title>
-    <ion-title class="email"> {{usuario.email}}</ion-title>
-    <ion-title class="email"> {{usuario.saldo}}</ion-title>
+
+
 
     <ion-list class="ion-no-padding">
         <ion-item-sliding>

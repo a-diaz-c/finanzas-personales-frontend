@@ -7,6 +7,7 @@ import { CategoriasService } from 'src/app/services/categorias.service';
 import { element } from 'protractor';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { UsuarioService } from 'src/app/services/usuario.service';
 
 @Component({
   selector: 'app-agregar-dia',
@@ -33,7 +34,8 @@ export class AgregarDiaPage implements OnInit {
               private categoriaService: CategoriasService,
               private storage: Storage,
               private route: ActivatedRoute,
-              private nacCtrl: NavController) {
+              private nacCtrl: NavController,
+              private usuario: UsuarioService) {
     this.crearFormulario();
     this.idDia = parseInt(this.route.snapshot.paramMap.get('nuevo'));
    }
@@ -142,20 +144,14 @@ export class AgregarDiaPage implements OnInit {
     }
 
     let fecha: string  = event.detail.value;
+    this.formulario.controls['saldoInicial'].setValue('');
     if(fecha === '') return;
-    this.cargarSaldoInicial(fecha);
   }
 
   private cargarSaldoInicial(fecha: string){
-    this.diasService.getSaldoInicial(this.token, fecha).subscribe( (resp: any) => {
-      console.log(resp);
-      if(resp.respuesta){
-       this.formulario.controls['saldoInicial'].setValue(resp.usuario.saldoFinal);
-       //this.formulario.controls['saldoInicial'].disable();
-      }else{
-       this.formulario.controls['saldoInicial'].setValue('');
-      }
-   });
+    this.usuario.getDatosUsuario(this.token).subscribe((resp: any)=>{
+      this.formulario.controls['saldoInicial'].setValue(resp.usuario.saldo);
+    });
   }
 
   cargarDatosFormulario(){
