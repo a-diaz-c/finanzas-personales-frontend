@@ -17,8 +17,8 @@ export class LoginPage implements OnInit {
   formularioLogin: FormGroup
 
   loginUser = {
-    username: 'diaz@gmail.com',
-    password: '12345'  
+    username: '',
+    password: ''  
   };
 
   registroUsuario: Usuario = {
@@ -45,8 +45,8 @@ export class LoginPage implements OnInit {
 
   crearFormularios(){
     this.formularioLogin = this.fb.group({
-      email: ['diaz@gmail.com', [Validators.required, Validators.email]],
-      password: ['12345', Validators.required]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required]
     });
     this.formularioRegistro = this.fb.group({
       email: ['', [Validators.required,Validators.email]],
@@ -62,6 +62,7 @@ export class LoginPage implements OnInit {
 
     this.loginUser.username = this.formularioLogin.get('email').value;
     this.loginUser.password = this.formularioLogin.get('password').value
+
 
     const valido = await this.usuarioService.login(this.loginUser.username, this.loginUser.password);
 

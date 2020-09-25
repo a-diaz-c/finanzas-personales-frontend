@@ -16,7 +16,8 @@ export class Tab2Page implements OnInit{
   usuario: Usuario = {
     nombre: '',
     apellido: '',
-    email: ''
+    email: '',
+    saldo: 0
   };
 
   constructor(private usuarioService: UsuarioService,
