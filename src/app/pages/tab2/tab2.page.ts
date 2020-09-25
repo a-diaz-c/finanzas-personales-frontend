@@ -31,6 +31,7 @@ export class Tab2Page implements OnInit{
   cargarUsusario(){
     this.usuarioService.getDatosUsuario(this.token).subscribe( (resp: any) => {
       this.usuario = resp.usuario;
+      console.log(resp.usuario);
     }, (err: HttpErrorResponse) => {
       console.log(err);
     });

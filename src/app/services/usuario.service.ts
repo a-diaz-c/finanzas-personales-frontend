@@ -44,8 +44,11 @@ export class UsuarioService {
         this.uiService.detenerLoading();
       },(err: HttpErrorResponse) => {
         this.storage.clear();
-        this.uiService.alertaInformativa("Error en el servidor");
-        console.log(err.error.error_description);
+        if(err.error.error == 'unauthorized'){
+          this.uiService.alertaInformativa("Datos incorrectos");  
+        }else{
+          this.uiService.alertaInformativa("Error en el servidor");
+        }
         resolve(false);
         this.uiService.detenerLoading();
       });
@@ -60,7 +63,7 @@ export class UsuarioService {
             resolve(true);
           }else{
             resolve(false);
-            this.uiService.alertaInformativa('Email o Contraseña no son correctos');
+            this.uiService.alertaInformativa(resp.mensaje);
           }
         }, (err: HttpErrorResponse) => {
           this.uiService.alertaInformativa("Error en el servidor");

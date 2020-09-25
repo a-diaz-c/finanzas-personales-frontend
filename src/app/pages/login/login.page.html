@@ -4,157 +4,127 @@
 
 <ion-content>
 
-  <ion-slides class="mainSlide">
-    
-    <ion-slide>
+    <ion-slides class="mainSlide">
 
-      <form (ngSubmit)="login( fLogin )" #fLogin="ngForm">
-        <ion-grid fixed>
-        
-          <ion-row>
-            <ion-col>
-              
-                <ion-list>
-                  
-                  <ion-item>
-                    <ion-label>Email</ion-label>
-                    <ion-input name="email"
-                                type="email"
-                                [(ngModel)]="loginUser.username"
-                                required></ion-input>
-                  </ion-item>
+        <ion-slide>
 
-                  <ion-item>
-                    <ion-label>Password</ion-label>
-                    <ion-input name="password"
-                                type="password"
-                                [(ngModel)]="loginUser.password"
-                                required></ion-input>
-                  </ion-item>
+            <form (ngSubmit)="login()" [formGroup]="formularioLogin">
+                <ion-grid fixed>
 
-                </ion-list>
-            </ion-col>
-          </ion-row>
+                    <ion-row>
+                        <ion-col>
 
-          <ion-row>
-            <ion-col>
-              <ion-button type="submit" color="tertiary" shape="round">
-                Login
-              </ion-button>
-            </ion-col>
-          </ion-row>
+                            <ion-list>
 
-        </ion-grid>
-      </form>
-    
+                                <ion-item>
+                                    <ion-label>Email</ion-label>
+                                    <ion-input type="email" formControlName="email" required></ion-input>
+                                </ion-item>
+
+                                <ion-item>
+                                    <ion-label>Password</ion-label>
+                                    <ion-input type="password" formControlName="password" required></ion-input>
+                                </ion-item>
+
+                            </ion-list>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col>
+                            <ion-button type="submit" color="azul" shape="round">
+                                Login
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
+
+                </ion-grid>
+            </form>
 
 
-    </ion-slide>
 
-    <ion-slide>
+        </ion-slide>
 
-      
-      <ion-grid fixed>
+        <ion-slide>
 
-            <ion-row>
-            <ion-col>
-                <h3>Seleccione Avatar</h3>
-            </ion-col>
-            </ion-row>
-        
-            <form (ngSubmit)="registro( fRegistro )" #fRegistro="ngForm">
+
+            <ion-grid fixed>
+
                 <ion-row>
                     <ion-col>
-                        
-                        <ion-list>
-                            
-                            <ion-item>
-                            <ion-label>Email</ion-label>
-                            <ion-input name="email" 
-                                        type="email"
-                                        [(ngModel)]="registroUsuario.email"
-                                        required></ion-input>
-                            </ion-item>
-
-                            <ion-item>
-                            <ion-label>Nombre</ion-label>
-                            <ion-input name="nombre"
-                                        type="text"
-                                        [(ngModel)]="registroUsuario.nombre"
-                                        required></ion-input>
-                            </ion-item>
-
-                            <ion-item>
-                              <ion-label>Apellido</ion-label>
-                              <ion-input name="apellido"
-                                          type="text"
-                                          [(ngModel)]="registroUsuario.apellido"
-                                          required></ion-input>
-                              </ion-item>
-
-                            <ion-item>
-                            <ion-label>Password</ion-label>
-                            <ion-input name="password"
-                                        type="password"
-                                        [(ngModel)]="registroUsuario.password"
-                                        required></ion-input>
-                            </ion-item>
-
-                        </ion-list>
+                        <h3>Nuevo usuario</h3>
                     </ion-col>
                 </ion-row>
-                
-                <ion-row>
-                <ion-col>
-                    <ion-button type="submit"
-                                color="tertiary"
-                                shape="round">
-                        Crear usuario
-                    </ion-button>
-                </ion-col>
-            </ion-row>
-            
-            </form>
-        </ion-grid>
-  
-  
-      </ion-slide>
+
+                <form (ngSubmit)="registro( fRegistro )" [formGroup]="formularioRegistro">
+                    <ion-row>
+                        <ion-col>
+
+                            <ion-list>
+
+                                <ion-item>
+                                    <ion-label>Email</ion-label>
+                                    <ion-input type="email" formControlName="email" required></ion-input>
+                                </ion-item>
+
+                                <ion-item>
+                                    <ion-label>Nombre</ion-label>
+                                    <ion-input type="text" formControlName="nombre" required></ion-input>
+                                </ion-item>
+
+                                <ion-item>
+                                    <ion-label>Apellido</ion-label>
+                                    <ion-input type="text" formControlName="apellido" required></ion-input>
+                                </ion-item>
+
+                                <ion-item>
+                                    <ion-label>Password</ion-label>
+                                    <ion-input type="password" formControlName="password" required></ion-input>
+                                </ion-item>
+
+                            </ion-list>
+                        </ion-col>
+                    </ion-row>
+
+                    <ion-row>
+                        <ion-col>
+                            <ion-button type="submit" color="azul" shape="round">
+                                Crear usuario
+                            </ion-button>
+                        </ion-col>
+                    </ion-row>
+
+                </form>
+            </ion-grid>
 
 
-  </ion-slides>
+        </ion-slide>
+
+
+    </ion-slides>
 
 </ion-content>
 
 <ion-footer no-border>
-  <ion-toolbar>
-    
-    <ion-row>
+    <ion-toolbar>
 
-      <ion-col>
-          <ion-button shape="round"
-                      expand="full"
-                      size="small"
-                      fill="outline"
-                      color="tertiary"
-                      (click)="mostrarLogin()">
-            Ingresar
-          </ion-button>
-      </ion-col>
+        <ion-row>
 
-      <ion-col>
-        <ion-button shape="round"
-                    expand="full"
-                    size="small"
-                    fill="outline"
-                    color="tertiary"
-                    (click)="mostrarRegistro()">
-          Registrarme
-        </ion-button>
-      </ion-col>
+            <ion-col>
+                <ion-button shape="round" expand="full" size="small" fill="outline" color="azul" (click)="mostrarLogin()">
+                    Ingresar
+                </ion-button>
+            </ion-col>
 
-    </ion-row>
+            <ion-col>
+                <ion-button shape="round" expand="full" size="small" fill="outline" color="azul" (click)="mostrarRegistro()">
+                    Registrarme
+                </ion-button>
+            </ion-col>
+
+        </ion-row>
 
 
 
-  </ion-toolbar>
+    </ion-toolbar>
 </ion-footer>

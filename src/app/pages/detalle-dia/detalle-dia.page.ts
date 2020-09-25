@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { DiasService } from 'src/app/services/dias.service';
 import { Storage } from '@ionic/storage';
 import { ActivatedRoute } from '@angular/router';
-import { ActionSheetController, NavController } from '@ionic/angular';
-
+import { ActionSheetController, AlertController, ModalController, NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-detalle-dia',
@@ -25,7 +24,9 @@ export class DetalleDiaPage implements OnInit {
               private storage: Storage,
               private route: ActivatedRoute,
               public actionSheetCrtl: ActionSheetController,
-              private navCtrl: NavController) {
+              private navCtrl: NavController,
+              public alertController: AlertController,
+              public modalController: ModalController) {
       this.idDia = parseInt(this.route.snapshot.paramMap.get('id'));
       this.fecha = this.route.snapshot.paramMap.get('fecha');
 
@@ -55,6 +56,9 @@ export class DetalleDiaPage implements OnInit {
         {
           text: 'Agregar Movimiento',
           icon: 'add-circle-outline',
+          handler: ()=>{
+            this.agregarMovimiento();
+          }
         },
         {
           text: 'Modificar',
@@ -83,6 +87,9 @@ export class DetalleDiaPage implements OnInit {
       }]
     });
     await actionSheet.present();
+  }
+
+  async agregarMovimiento(){
   }
 
 

@@ -4,7 +4,6 @@ import { DiasService } from 'src/app/services/dias.service';
 import { GastosService } from 'src/app/services/gastos.service';
 import { Storage } from '@ionic/storage';
 import { CategoriasService } from 'src/app/services/categorias.service';
-import { element } from 'protractor';
 import { ActivatedRoute } from '@angular/router';
 import { NavController } from '@ionic/angular';
 import { UsuarioService } from 'src/app/services/usuario.service';
@@ -16,7 +15,7 @@ import { UsuarioService } from 'src/app/services/usuario.service';
 })
 export class AgregarDiaPage implements OnInit {
 
-  formulario: FormGroup
+  formulario: FormGroup;
   cantidades: any[] = [];
   token: string = '';
   categorias: any[] = [];
@@ -57,10 +56,10 @@ export class AgregarDiaPage implements OnInit {
     this.formulario = this.fb.group({
       fecha: [this.fechaActual(), Validators.required],
       saldoInicial: ['', Validators.required],
-      categoria:['', Validators.required],
-      gasto: ['', Validators.required],
-      ingreso: [false, Validators.required],
-      cantidad: ['', Validators.required]
+      categoria:[''],
+      gasto: [''],
+      ingreso: [false],
+      cantidad: ['']
     });
   }
 
@@ -95,6 +94,7 @@ export class AgregarDiaPage implements OnInit {
 
   submit(){
     if(this.formulario.invalid){
+      console.log('invalido');
       this.formulario.controls['saldoInicial'].markAllAsTouched();
       return;
     }

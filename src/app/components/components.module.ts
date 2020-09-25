@@ -9,11 +9,11 @@ import { MenuComponent } from './menu/menu.component';
 @NgModule({
   declarations: [
     HeaderComponent,
-    MenuComponent
+    MenuComponent,
   ],
   exports:[
     HeaderComponent,
-    MenuComponent
+    MenuComponent,
   ],
   imports: [
     CommonModule,
